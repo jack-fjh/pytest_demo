@@ -1,6 +1,8 @@
 from selenium import webdriver
 from test_project.common.singdriver import SingleDriver
+from test_project.pom.user_page import UserPage
 
+userpage=UserPage()
 
 class UserAction(object):
     '''
@@ -14,7 +16,7 @@ class UserAction(object):
 
     def user_login(self,username,password):
         self.driver.get('http://49.233.108.117:3000/signin')
-        self.driver.find_element_by_css_selector('#name').send_keys(username)
+        userpage.username_input.send_keys(username)
         self.driver.find_element_by_css_selector('#pass').send_keys(password)
         self.driver.find_element_by_css_selector('input[value="登录"]').click()
 
