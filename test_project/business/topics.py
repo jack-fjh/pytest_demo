@@ -21,7 +21,7 @@ class TopicAction(object):
         self._content_css='div[class="CodeMirror-scroll"]'
         self._submit_css='input[value="提交"]'
 
-    def __create_topic(self,title=None,tab=None,content=None):
+    def __create_topic(self,tab=None,title=None,content=None):
         if tab is not None:
             select_tab=self.driver.find_element_by_css_selector(self._tab_css)
             Select(select_tab).select_by_value(tab)
@@ -34,6 +34,7 @@ class TopicAction(object):
             content_area=self.driver.find_element_by_css_selector(self._content_css)
             actions = ActionChains(self.driver)
             content_area.click()
+            print('----点击一下----')
             if sys.platform == 'win32':
                 #用于windows系统
                 actions.move_to_element(content_area).key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL).send_keys(Keys.DELETE).perform()
@@ -47,13 +48,13 @@ class TopicAction(object):
             submit.click()
 
 
-    def add_topic(self,title,tab,content):
+    def add_topic(self,tab,title,content):
         # self.driver.find_element_by_css_selector('select[id="tab-value"]').click()
         # self.driver.find_element_by_css_selector(f'option[value="{tab}"]').click()
         # self.driver.find_element_by_css_selector('textarea[id="title"]').send_keys(title)
         # self.driver.find_element_by_css_selector('div[class="CodeMirror-scroll"]').send_keys(content)
         # self.driver.find_element_by_css_selector('input[class="span-primary submit_btn"]').click()
-        self.__create_topic(title,tab,content)
+        self.__create_topic(tab,title,content)
 
 
 

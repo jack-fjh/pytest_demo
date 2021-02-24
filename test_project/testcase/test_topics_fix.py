@@ -46,7 +46,7 @@ class TestTmp(object):
         #2:打开新建话题页面
         viewManage.go_to_newtopic_page()
         #3:创建新话题
-        topicAction.add_topic('hello world','share','hello world')
+        topicAction.add_topic('share','hello world','hello world')
 
         #1。标题内容添加断言
         title_text=topicpage.title_text
